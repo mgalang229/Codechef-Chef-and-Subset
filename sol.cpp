@@ -26,7 +26,7 @@ void solve() {
 	}
 	
 	//output ans
-	cout <<(ok?"Yes":"No") << "\n";
+	cout << (ok?"Yes":"No") << "\n";
 }
 
 int main() {
