@@ -1,40 +1,34 @@
 #include <bits/stdc++.h>
+
 using namespace std;
-
-#define ll long long
-
-void solve() {
-	//input
-	int a[4];
-	for(int i=0; i<4; ++i)
-		cin >> a[i];
-		
-	//perform bit masking
-	bool ok=0;
-	for(int mk=0; mk<(1<<4); ++mk) {
-		int sum=0;
-		bool chk=0;
-		for(int i=0;i<4; ++i)
-			if(mk&(1<<i)) {
-				sum+=a[i];
-				chk=1;
-			}
-		if(sum==0&&chk) {
-			ok=1;
-			break;
-		}
-	}
-	
-	//output ans
-	cout << (ok?"Yes":"No") << "\n";
-}
 
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	
-	int t;
-	cin >> t;
-	while(t--)
-		solve();
+	int tt;
+	cin >> tt;
+	while (tt--) {
+		int a[4];
+		for (int i = 0; i < 4; i++) {
+			cin >> a[i];
+		}
+		// use bit masking to generate all possible subsets and take the sum of these subsets
+		bool checker = false;
+		for (int mask = 0; mask < (1 << 4); mask++) {
+			int sum = 0;
+			bool activated = false;
+			for (int i = 0; i < 4; i++) {
+				if (mask & (1 << i)) {
+					sum += a[i];
+					activated = true;
+				}
+			}
+			if (sum == 0 && activated) {
+				checker = true;
+				break;
+			}
+		}
+		cout << (checker ? "Yes" : "No") << '\n';
+	}
+	return 0;
 }
